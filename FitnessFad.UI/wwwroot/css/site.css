@@ -181,3 +181,53 @@ app {
         display: block;
     }
 }
+
+/*THIS IS MY OWN CSS*/
+.avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.navbar {
+    position: relative;
+}
+
+.navbar-brand {
+    position: absolute;
+    left: 46.5%;
+    margin-left: -50px !important; /* 50% of your logo width */
+    display: block;
+}
+
+.small-text {
+    font-size: 0.8rem;
+}
+
+/*html {
+    font-size: 1rem;
+}
+
+@media (min-width: 576px) {
+    html {
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    html {
+        font-size: 2rem;
+    }
+}*/

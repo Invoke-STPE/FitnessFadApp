@@ -1,16 +1,62 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="sidebar">
-    <NavMenu />
-</div>
 
 <div class="main">
-    <div class="top-row px-4 auth">
-        <LoginDisplay />
-        <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-    </div>
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark w-100 pt-4">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <h1 class="display-6 text-light">
+                    <span class="text-success">F</span>itness<span class="text-success">F</span>ad
+                </h1>
+            </a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a type="button"
+                           data-toggle="modal"
+                           data-target="#informationModal">
+                            <i class="bi bi-info-circle text-white"></i>
+                        </a>
+                    </li>
+                </ul>
+                <div v-if="login">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <div class="dropdown dropleft">
+                                <button class="btn dropdown-toggle" id="profileSettings" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="images/person-circle.svg" class="avatar" />
+
+                                    <img src="images/caret-down-fill.svg"
+                                         style="width: 15px; height: 15px" />
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="profileSettings">
+                                    <li><a class="dropdown-item" data-toggle="modal"
+                                        data-target="#profileModal">Settings</a></li>
+                                    <li>
+                                        <form method="post" action="Identity/Account/LogOut">
+                                            <button type="submit" class="dropdown-item">Log out</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <div class="content px-4">
         @Body
     </div>
+
+   <FitnessFad.UI.Shared.Modals.InformationModal />
+    <FitnessFad.UI.Shared.Modals.ProfileSettings />
 </div>

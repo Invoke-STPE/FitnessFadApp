@@ -1,7 +1,122 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+<div class="container">
+    <div class="row d-flex justify-content-center pt-5">
+        <div class="col-12 text-center">
+            <h2 class="h4 text-muted">Calories left:</h2>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+        </div>
+        <div class="col-12 text-center">
+            <h2 class="display-4">3070 kcal</h2>
+            <hr />
+        </div>
+
+    </div>
+    <div class="row d-flex justify-content-center pb-5">
+        <div class="col-md-3">
+            <p class="text-muted text-center mb-0 mt-1">Carbs</p>
+            <p class="text-muted text-center small-text mb-2">70g left</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <p class="text-muted text-center mb-0 mt-2">Protein</p>
+            <p class="text-muted text-center small-text mb-2 ">70g left</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <p class="text-muted text-center mb-0 mt-2">Fat</p>
+            <p class="text-muted text-center small-text mb-2">70g left</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+
+        </div>
+
+    </div>
+    <hr />
+    <div class="row">
+        @for (int i = 0; i < meals; i++)
+        {
+            <div class="col-md-4 col-sm-12 col-12">
+                <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+                    <div class="card-header">
+                        <p>Meal @i</p>
+                        <div>
+                        <span class="text-white small-text p-1 bg-secondary">1250 kcal</span>
+                        <span class="text-white small-text p-1 bg-secondary">28.0g</span>
+                        <span class="text-white small-text p-1 bg-secondary">23.5</span>
+                        <span class="text-white small-text p-1 bg-secondary">29.4</span>
+                        </div>
+                        
+                    </div>
+                    <div class="card-body">
+                        @foreach (var meal in Meals)
+                        {
+                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white ">
+                            <p class="mb-0">@meal.Value</p>
+                            <span class="text-white small-text p-1 bg-secondary">1250 kcal</span>
+                            <span class="text-white small-text p-1 bg-secondary">28.0g</span>
+                            <span class="text-white small-text p-1 bg-secondary">23.5</span>
+                            <span class="text-white small-text p-1 bg-secondary">29.4</span>
+                        </a>
+                        }
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" data-toggle="modal"
+                                data-target="#addMeal" class="btn btn-primary btn-block">
+                            Add meal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@* Modal *@
+<div class="modal fade" id="addMeal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profileModalLabel">Add a meal.</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="list-group">
+                <form class="form-inline my-2 my-lg-0">
+                    <div class="input-group w-100">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-success mr-1 my-sm-0" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+                @foreach (var meal in Meals)
+                {
+                    <a href="#" class="list-group-item list-group-item-action">@meal.Value <span>800kcals</span></a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code{ 
+
+    private int meals = 5;
+    public Dictionary<int, string> Meals { get; set; } = new Dictionary<int, string>();
+
+    public Index()
+    {
+        Meals.Add(1, "Spegethi");
+        Meals.Add(2, "MeatBall");
+        Meals.Add(3, "Ryebread");
+    }
+
+}

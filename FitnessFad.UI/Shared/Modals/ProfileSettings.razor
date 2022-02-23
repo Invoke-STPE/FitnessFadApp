@@ -1,0 +1,57 @@
+﻿
+<div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profileModalLabel">FitnessFad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <EditForm Model="userSettings" OnSubmit="OnHandleSubmit">
+                <div class="modal-body">
+                        <div class="form-group">
+                            <label for="mealInput">Number of Meals:</label>
+                            <InputNumber @bind-Value="userSettings.Meals" class="form-control" id="mealInput" />
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="goalsInput">Choose your goal:</label>
+                            <select id="goalSelect" @onchange="HandleGoalChange">
+                                @foreach (var goal in Goals)
+                                {
+                                    <option value="@goal.Key">@goal.Value</option>
+                                }
+                            </select>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal">Save</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    public Dictionary<int, string> Goals { get; set; } = new Dictionary<int, string>();
+    private UserSettings userSettings = new UserSettings();
+
+    public ProfileSettings()
+    {
+        Goals.Add(1, "Weight Loss");
+        Goals.Add(2, "Maintain");
+        Goals.Add(3, "Build Muscles");
+    }
+
+    private void OnHandleSubmit()
+    {
+
+    }
+
+    private void HandleGoalChange()
+    {
+
+    }
+}
