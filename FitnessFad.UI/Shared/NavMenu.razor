@@ -1,37 +1,52 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">FitnessFad.UI</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
+﻿<nav class="navbar navbar-expand-md bg-dark navbar-dark w-100 pt-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <h1 class="display-6 text-light">
+                <span class="text-success">F</span>itness<span class="text-success">F</span>ad
+            </h1>
+        </a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a type="button"
+                       href="#"
+                       data-toggle="modal"
+                       data-target="#informationModal">
+                        <i class="bi bi-info-circle text-white"></i>
+                    </a>
+                </li>
+            </ul>
+            <div v-if="login">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <div class="dropdown dropleft">
+                            <button class="btn dropdown-toggle" id="profileSettings" data-toggle="dropdown" aria-expanded="false">
+                                <img src="images/person-circle.svg" class="avatar" />
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
-        </li>
-    </ul>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
-}
+                                <img src="images/caret-down-fill.svg"
+                                     style="width: 15px; height: 15px" />
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="profileSettings">
+                                <li>
+                                    <a class="dropdown-item" data-toggle="modal"
+                                       data-target="#profileModal">Settings</a>
+                                </li>
+                                <li>
+                                    <form method="post" action="Identity/Account/LogOut">
+                                        <button type="submit" class="dropdown-item">Log out</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

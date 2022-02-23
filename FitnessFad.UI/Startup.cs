@@ -1,3 +1,4 @@
+using FitnessFad.BL.Data;
 using FitnessFad.UI.Areas.Identity;
 using FitnessFad.UI.Data;
 using Microsoft.AspNetCore.Builder;
@@ -39,6 +40,9 @@ namespace FitnessFad.UI
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+            services.AddScoped<IIngredientDataService, IngredientDummyDataService>();
+            services.AddSingleton<IMealDummyDataService, MealDummyDataService>();
+            services.AddSingleton<IUserDataService, UserDummyDataService>();
             services.AddSingleton<WeatherForecastService>();
         }
 
