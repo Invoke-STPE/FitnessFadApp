@@ -26,7 +26,7 @@
 
             </div>
             <div class="card-footer">
-                <button type="button" data-toggle="modal" @onclick="() => SetTargetMeal(meal) "
+                <button type="button" data-toggle="modal" @onclick="() => HandleOnChosenMeal(meal) "
                         data-target="#addMeal" class="btn btn-primary btn-block">
                     Add meal
                 </button>
@@ -37,10 +37,13 @@
 
 @code {
     [Parameter]
-    public List<IIngredientModel> Meals { get; set; }
+    public List<IMealModel> Meals { get; set; }
     [Parameter]
     public EventCallback<IMealModel> OnChosenMeal { get; set; }
 
-    private void HandleOnChosenMeal()
+    private void HandleOnChosenMeal(IMealModel meal)
+    {
+        OnChosenMeal.InvokeAsync(meal);
+    }
 
 }
