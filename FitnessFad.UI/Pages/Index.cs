@@ -46,6 +46,7 @@ namespace FitnessFad.UI.Pages
             if (ingredient != null)
             {
                 TargetMeal.Ingredients.Add(ingredient);
+                InvokeAsync(StateHasChanged);
             }
         }
 

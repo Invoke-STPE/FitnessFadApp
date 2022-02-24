@@ -11,7 +11,7 @@
                     
                 </div>
                 <div class="col-12 text-center">
-                    <h2 class="display-4">3070 kcal</h2>
+                    <h2 class="display-4">@(User.CalorieGoal - User.GetCurrentCalories()) kcal</h2>
                     <hr />
                 </div>
 
@@ -19,23 +19,32 @@
             <div class="row d-flex justify-content-center pb-5">
                 <div class="col-md-3">
                     <p class="text-muted text-center mb-0 mt-1">Carbs</p>
-                    <p class="text-muted text-center small-text mb-2">70g left</p>
+                    <p class="text-muted text-center small-text mb-2">@(User.TotalCarbsGoal() - User.GetCurrentCarbs())g left</p>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" style="width: @(User.GetProcentOfNumber(User.GetCurrentCarbs(), User.TotalCarbsGoal()))%"
+                             aria-valuenow="@User.GetCurrentCarbs()"
+                             aria-valuemin="0"
+                             aria-valuemax="@User.TotalCarbsGoal()"></div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <p class="text-muted text-center mb-0 mt-2">Protein</p>
-                    <p class="text-muted text-center small-text mb-2 ">70g left</p>
+                    <p class="text-muted text-center small-text mb-2 ">@(User.TotalProteinGoal() - User.GetCurrentProtein())g left</p>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" style="width:  @(User.GetProcentOfNumber(User.GetCurrentProtein(), User.TotalProteinGoal()))%"
+                             aria-valuenow="@User.GetCurrentProtein()"
+                             aria-valuemin="0"
+                             aria-valuemax="@User.TotalProteinGoal()"></div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <p class="text-muted text-center mb-0 mt-2">Fat</p>
-                    <p class="text-muted text-center small-text mb-2">70g left</p>
+                    <p class="text-muted text-center small-text mb-2">@(User.TotalFatGoal() - User.GetCurrentFat())g left</p>
                     <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar" role="progressbar" style="width: @(User.GetProcentOfNumber(User.GetCurrentFat(), User.TotalFatGoal()))%"
+                             aria-valuenow="@User.GetCurrentFat()"
+                             aria-valuemin="0"
+                             aria-valuemax="@User.TotalFatGoal()"></div>
                     </div>
 
                 </div>
@@ -54,7 +63,7 @@
         </div>
 
         @* Modal *@
-        <AddIngredientComponent OnChosen="HandleOnChosen"/>
+        <AddIngredientComponent OnChosen="HandleOnChosen" />
         } else
             {
                 <p>Loading user data...</p>
