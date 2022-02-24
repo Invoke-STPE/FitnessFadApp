@@ -61,14 +61,17 @@
                                 @foreach (var ingredient in meal.Ingredients)
                                 {
                                     <a href="#" class="list-group-item list-group-item-action bg-dark text-white ">
-                                        <p class="mb-0">@meal.Name</p>
-                                        <DisplayNutrionalInformation Calories="ingredient.Calories" Carbs="ingredient.Carbs" Protein="ingredient.Protein" Fat="ingredient.Fat" />
+                                        <p class="mb-0">@ingredient.Name</p>
+                                        <DisplayNutrionalInformation Calories="ingredient.Calories"
+                                                                     Carbs="ingredient.Carbs" 
+                                                                     Protein="ingredient.Protein" 
+                                                                     Fat="ingredient.Fat" />
                                     </a>
                                 }
 
                             </div>
                             <div class="card-footer">
-                                <button type="button" data-toggle="modal"
+                                <button type="button" data-toggle="modal" @onclick="() => SetTargetMeal(meal) "
                                         data-target="#addMeal" class="btn btn-primary btn-block">
                                     Add meal
                                 </button>
@@ -86,7 +89,7 @@
         </div>
 
         @* Modal *@
-        <AddIngredientComponent />
+        <AddIngredientComponent OnChosen="HandleOnChosen"/>
         } else
             {
                 <p>Loading user data...</p>

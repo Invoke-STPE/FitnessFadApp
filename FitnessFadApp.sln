@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessFad.UI", "FitnessFad.UI\FitnessFad.UI.csproj", "{9DF8371E-FAA9-4282-A53F-A895A4B922F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessFad.BL", "FitnessFad.BL\FitnessFad.BL.csproj", "{790CBECC-EE67-4F71-B58D-2F4C034408B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitnessFad.BL", "FitnessFad.BL\FitnessFad.BL.csproj", "{790CBECC-EE67-4F71-B58D-2F4C034408B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

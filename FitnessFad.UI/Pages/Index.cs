@@ -25,6 +25,7 @@ namespace FitnessFad.UI.Pages
         public List<IMealModel> Meals { get; set; } = new List<IMealModel>();
         public IUserModel User { get; set; }
         public IMealModel Meal { get; set; } = new DisplayMealModel();
+        public IMealModel TargetMeal { get; set; }
 
 
         protected async override Task OnInitializedAsync()
@@ -38,6 +39,19 @@ namespace FitnessFad.UI.Pages
         {
             IMealModel meal = await MealDataService.CreateMeal(Meal);
             User.Meals.Add(meal);
+        }
+
+        private void HandleOnChosen(IIngredientModel ingredient)
+        {
+            if (ingredient != null)
+            {
+                TargetMeal.Ingredients.Add(ingredient);
+            }
+        }
+
+        private void SetTargetMeal(IMealModel targetMeal)
+        {
+            TargetMeal = targetMeal;
         }
 
 

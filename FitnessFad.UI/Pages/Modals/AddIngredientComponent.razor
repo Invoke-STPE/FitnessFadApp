@@ -19,7 +19,7 @@
                 </form>
                 @foreach (var ingredient in ingredients)
                 {
-                    <a href="#" class="list-group-item list-group-item-action">@ingredient.Name 
+                    <a href="#" class="list-group-item list-group-item-action" @onclick="() => ChooseIngredient(ingredient)">@ingredient.Name 
                 <DisplayNutrionalInformation Calories="ingredient.Calories" 
                                              Carbs="ingredient.Carbs" 
                                              Protein="ingredient.Protein" 
@@ -32,11 +32,19 @@
 </div>
 
 @code {
+    [Parameter]
+    public EventCallback<IIngredientModel> OnChosen { get; set; }
+
     private List<IIngredientModel> ingredients;
 
 
     protected async override Task OnInitializedAsync()
     {
         ingredients = await dataService.GetIngredients();
+    }
+    private void ChooseIngredient(IIngredientModel ingredient)
+    {
+        OnChosen.InvokeAsync(ingredient);
+        
     }
 }
